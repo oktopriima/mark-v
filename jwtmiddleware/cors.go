@@ -1,14 +1,14 @@
 package jwtmiddleware
 
 import (
-	"github.com/KulinaID/kulina-go-libraries/kuconfig"
 	"github.com/gin-gonic/gin"
+	"github.com/oktopriima/mark-v/configurations"
 	"net/http"
 )
 
 func CORSMiddleware() gin.HandlerFunc {
 	return func(ctx *gin.Context) {
-		conf := kuconfig.NewConfig()
+		conf := configurations.NewConfig("yaml")
 
 		ctx.Writer.Header().Set("Access-Control-Allow-Origin", conf.GetString("cors.allowed_origins"))
 		ctx.Writer.Header().Set("Access-Control-Allow-Headers", conf.GetString("cors.allowed_headers"))
