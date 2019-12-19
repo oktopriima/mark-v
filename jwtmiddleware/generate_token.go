@@ -1,8 +1,8 @@
 package jwtmiddleware
 
 import (
-	"github.com/KulinaID/kulina-go-libraries/kuconfig"
 	"github.com/dgrijalva/jwt-go"
+	"github.com/oktopriima/mark-v/configurations"
 	"golang.org/x/crypto/bcrypt"
 	"time"
 )
@@ -32,7 +32,7 @@ func NewCustomAuth(signature []byte) CustomAuth {
 }
 
 func (cAuth *customAuth) GenerateToken(data TokenRequestStructure) (response TokenResponse, err error) {
-	cfg := kuconfig.NewConfig()
+	cfg := configurations.NewConfig()
 
 	token := jwt.New(jwt.SigningMethodHS512)
 	claims := token.Claims.(jwt.MapClaims)
