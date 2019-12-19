@@ -32,7 +32,7 @@ func NewCustomAuth(signature []byte) CustomAuth {
 }
 
 func (cAuth *customAuth) GenerateToken(data TokenRequestStructure) (response TokenResponse, err error) {
-	cfg := configurations.NewConfig()
+	cfg := configurations.NewConfig("yaml")
 
 	token := jwt.New(jwt.SigningMethodHS512)
 	claims := token.Claims.(jwt.MapClaims)
